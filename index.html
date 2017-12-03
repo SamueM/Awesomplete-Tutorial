@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Awesomplete</title>
+	<link rel="stylesheet" href="css/awesomplete.css">
+</head>
+<body>
+
+
+	<h3>Awesomplete</h3>
+
+	<p>Autocompletado: <a href="https://leaverou.github.io/awesomplete/">Libreria</a></p>
+
+	<p>Funciona con el atributo data-list y la clase awesomeplete.</p>
+
+	<p>Por default funciona solo con 2 caracteres</p>
+
+	<p><input type="text"
+	 name="campos"
+	 id="campos" 
+	 placeholder="juegos y tipos" 
+	 data-list="ANDROID, Arkham Horror, El Señor de los Anillos, Juego de Tronos, La Leyenda de los Cinco Anillos, Reinos de Terrinoth, Star Wars, Otros juegos, ACCESORIOS, cartas, dados, Ficción, tablero, organizado, Living Card Games, Libros de arte, miniaturas, rol"
+	 class="awesomplete"></p>
+
+	 <p><input type="text"
+	 type="text"
+	 id="tipos"
+	 placeholder="Tematicas" 
+	 data-list="ABSTRACTO, ANIMALES, ASESINATO, MISTERIO, AVENTURA, AVIACIÓN, VUELO, CARRERAS, CIENCIA FICCIÓN, CIVILIZACIÓN, COMBATE, CONSTRUCCIÓN DE CIUDADES, CONSTRUCCIÓN DE TERRITORIO, DEDUCCIÓN, DEPORTES, ECONOMÍA, EDUCATIVO, ESPIAS, AGENTES, SECRETOS, EXPLORACIÓN, FANTASÍA, FAROLEO, FIESTA, GUERRA, HUMOR, INDUSTRIA, PRODUCCIÓN, LABERINTO, MEDIEVAL,MITOLOGÍA, NAÚTICO, NEGOCIACIÓN, OESTE, AMERICANO, POLÍTICA, RENACIMIENTO,ROMPECABEZAS, STEAMPUNK, TERROR, TRANSPORTE, TRIVIA, VIAJES" 
+	 class="awesomplete"></p>
+
+
+	<p> Campo al que añadimos sus valores con Javascript <input type="text"
+	 type="text"
+	 id="customJS"
+	 placeholder="Tematicas"  
+	 class="awesomplete"></p>
+
+	 <p> Campo al que añadimos sus valores con Javascript + Dropdown <input type="text"
+	 type="text"
+	 id="customJS2"
+	 placeholder="Tematicas"  
+	 class="awesomplete dropdown-inputAwsome"></p>
+
+	 <p>Email <input type="email" placeholder="email" /></p>
+
+	 <p>Selecionar multiples valores<input data-list="CSS, JavaScript, HTML, SVG, ARIA, MathML" data-multiple /></p>
+
+
+
+	 <p>
+	 	<input type="text" id="tipos2" placeholder="Tematicas" data-list="#lista" class="awesomplete">
+	 	<ul id="lista">
+	 		<li>ABSTRACTO</li>
+	 		<li>ANIMALES</li>
+	 		<li>ASESINATO</li>
+	 		<li>MISTERIO</li>
+	 		<li>AVENTURA</li>
+	 		<li>AVIACIÓN</li>
+	 		<li>VUELO</li>
+	 		<li>CARRERAS</li>
+			<li>CIENCIA FICCIÓN</li>
+			<li>CIVILIZACIÓN, COMBATE</li>
+			<li>CONSTRUCCIÓN DE CIUDADES</li>
+			<li>CONSTRUCCIÓN DE TERRITORIO</li>
+			<li>DEDUCCIÓN</li>
+			<li>DEPORTES</li>
+			<li>ECONOMÍA</li>
+			<li>EDUCATIVO</li>
+			<li>ESPIAS</li>
+			<li>AGENTES</li>
+			<li>SECRETOS,</li>
+			<li>EXPLORACIÓN,</li>
+			<li>FANTASÍA, FAROLEO,</li>
+			<li>FIESTA,</li>
+			<li>GUERRA,</li>
+			<li>HUMOR,</li>
+			<li>INDUSTRIA,</li>
+			<li>PRODUCCIÓN, </li>
+			<li>LABERINTO,</li>
+			<li>MEDIEVAL,</li>
+			<li>MITOLOGÍA, </li>
+			<li>NAÚTICO,</li>
+			<li>NEGOCIACIÓN,</li>
+			<li>OESTE,</li>
+			<li>AMERICANO,</li>
+			<li>POLÍTICA,</li>
+			<li>RENACIMIENTO,</li>
+			<li>ROMPECABEZAS,</li>
+			<li>STEAMPUNK, </li>
+			<li>TERROR,</li>
+			<li>TRANSPORTE,</li>
+			<li>TRIVIA,</li>
+			<li>VIAJES</li>
+	 	</ul>
+	 </p>
+
+
+	<script type="text/javascript" src="js/awesomplete.js"></script>
+
+	<script type="text/javascript" >
+		
+		var elemento = document.getElementById('customJS');
+
+		new Awesomplete(elemento, {
+			list: ["ABSTRACTO", "ANIMALES", "ASESINATO", "MISTERIO", "AVENTURA", "AVIACIÓN", "VUELO", "CARRERAS", "CIENCIA FICCIÓN", "CIVILIZACIÓN", "COMBATE", "CONSTRUCCIÓN DE CIUDADES", "CONSTRUCCIÓN DE TERRITORIO", "DEDUCCIÓN", "DEPORTES", "ECONOMÍA", "EDUCATIVO", "ESPIAS", "AGENTES", "SECRETOS", "EXPLORACIÓN", "FANTASÍA", "FAROLEO", "FIESTA", "GUERRA", "HUMOR", "INDUSTRIA", "PRODUCCIÓN", "LABERINTO", "MEDIEVAL","MITOLOGÍA", "NAÚTICO", "NEGOCIACIÓN", "OESTE", "AMERICANO", "POLÍTICA", "RENACIMIENTO","ROMPECABEZAS", "STEAMPUNK", "TERROR", "TRANSPORTE", "TRIVIA", "VIAJES"]
+		}) ;
+
+
+		var dropdown = new Awesomplete('.dropdown-inputAwsome', {
+			minChars: 0,
+			list: ["ABSTRACTO", "ANIMALES", "ASESINATO", "MISTERIO", "AVENTURA", "AVIACIÓN", "VUELO", "CARRERAS", "CIENCIA FICCIÓN", "CIVILIZACIÓN", "COMBATE", "CONSTRUCCIÓN DE CIUDADES", "CONSTRUCCIÓN DE TERRITORIO", "DEDUCCIÓN", "DEPORTES", "ECONOMÍA", "EDUCATIVO", "ESPIAS", "AGENTES", "SECRETOS", "EXPLORACIÓN", "FANTASÍA", "FAROLEO", "FIESTA", "GUERRA", "HUMOR", "INDUSTRIA", "PRODUCCIÓN", "LABERINTO", "MEDIEVAL","MITOLOGÍA", "NAÚTICO", "NEGOCIACIÓN", "OESTE", "AMERICANO", "POLÍTICA", "RENACIMIENTO","ROMPECABEZAS", "STEAMPUNK", "TERROR", "TRANSPORTE", "TRIVIA", "VIAJES"]
+		});
+
+		Awesomplete.$('.dropdown-inputAwsome').addEventListener("click", function() {
+			if (dropdown.ul.childNodes.length === 0) {
+				dropdown.minChars = 0;
+				dropdown.evaluate();
+			}
+			else if (dropdown.ul.hasAttribute('hidden')) {
+				dropdown.open();
+			}
+			else {
+				dropdown.close();
+			}
+		});
+
+		new Awesomplete('input[type="email"]', {
+			list: ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gmx.com", "googlemail.com", "google.com", "hotmail.com", "hotmail.co.uk", "mac.com", "me.com", "mail.com", "msn.com", "live.com", "sbcglobal.net", "verizon.net", "yahoo.com", "yahoo.co.uk"],
+			data: function (text, input) {
+				return input.slice(0, input.indexOf("@")) + "@" + text;
+			},
+			filter: Awesomplete.FILTER_STARTSWITH
+		});
+
+		new Awesomplete('input[data-multiple]', {
+			filter: function(text, input) {
+				return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+			},
+
+			item: function(text, input) {
+				return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+			},
+
+			replace: function(text) {
+				var before = this.input.value.match(/^.+,\s*|/)[0];
+				this.input.value = before + text + ", ";
+			}
+		});
+
+
+	</script>
+</body>
+</html>
