@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang='es'>
+  <head>
+    <title>Custom Awesomeplete</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb' crossorigin='anonymous'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/awesomplete.css'>
+    <style type='text/css'>
+        .toSelect {
+            min-height: 50px ;
+            max-height: 250px ;
+            overflow-y: scroll;
+        }
+        .toOption {
+            border-bottom: solid 1px #d0d2d3 ;
+            padding-top:7px !important;
+            padding-bottom:7px !important;
+        }
+        .inInput {
+            width: 1px;
+            right: 25px;
+            position: relative;
+        }
+    </style>
+  </head>
+  <body>
+    <div class='container mt-1'>
+        <h2>Custom Input Awesomeplete!</h2>
+
+        <div class='row mt-4'>
+            <div class='col-md-4'>
+                <div class='form-group'>
+                    <h4>De input text a Select: </h4>
+                    <input type='text' id='input'
+	                placeholder='Tematicas'  
+                    class='form-control awesomplete dropdown-inputAwsome'>
+                    <i class='fa fa-caret-down inInput' aria-hidden='true'></i>
+                    </input>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class='form-group'>
+                    <h4>Opcion Preseleccionada: </h4>
+                    <input type='text' id='input2'
+	                placeholder='Tematicas'  
+                    class='form-control awesomplete dropdown-inputAwsome'>
+                    <i class='fa fa-caret-down inInput' aria-hidden='true'></i>
+                    </input>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class='form-group'>
+                    <h4>Array de objetos: </h4>
+                    <p>
+                        [{ </br>
+                        &nbsp&nbsp nombre: 'ASESINATO', </br>
+                        &nbsp&nbsp propiedad: '5' </br>
+                        }, </br>
+                        { </br>
+                        &nbsp&nbsp nombre: 'MISTERIO', </br>
+                        &nbsp&nbsp propiedad: 'true' </br>
+                        } ... ] </br>
+                    </p>
+                    <input type='text' id='input3'
+	                placeholder='Tematicas'  
+                    class='form-control awesomplete dropdown-inputAwsome'>
+                    <i class='fa fa-caret-down inInput' aria-hidden='true'></i>
+                    </input>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js' integrity='sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh' crossorigin='anonymous'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js' integrity='sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ' crossorigin='anonymous'></script>
+    <script src='js/awesomplete.min.js'></script>
+    <script type='text/javascript'>
+
+        /*
+            ================================================= =================================================
+                                                De input text a Select       
+            ================================================= =================================================
+        */
+        var lista = ['ABSTRACTO', 'ANIMALES', 'ASESINATO', 'MISTERIO', 'AVENTURA', 'AVIACIÓN', 'VUELO', 'CARRERAS', 'CIENCIA FICCIÓN', 'CIVILIZACIÓN', 'COMBATE', 'CONSTRUCCIÓN DE CIUDADES', 'CONSTRUCCIÓN DE TERRITORIO', 'DEDUCCIÓN', 'DEPORTES', 'ECONOMÍA', 'EDUCATIVO', 'ESPIAS', 'AGENTES', 'SECRETOS', 'EXPLORACIÓN', 'FANTASÍA', 'ROL', 'NAVES', 'FAROLEO', 'FIESTA', 'GUERRA', 'HUMOR', 'INDUSTRIA', 'PRODUCCIÓN', 'LABERINTO', 'MEDIEVAL','MITOLOGÍA', 'NAÚTICO', 'NEGOCIACIÓN', 'OESTE', 'AMERICANO', 'POLÍTICA', 'RENACIMIENTO','ROMPECABEZAS', 'STEAMPUNK', 'TERROR', 'TRANSPORTE', 'TRIVIA', 'VIAJES'] ;
+        var dropdown = new Awesomplete('#input', {
+			minChars: 0,
+			list: lista,
+            maxItems: lista.length
+		});
+        /*
+            Awesomplete genera una lista de elementos con el id = awesomplete_list_1
+            y cada uno de los elementos awesomplete_list_1_item_0
+        */
+        $('#awesomplete_list_1').addClass('toSelect');
+		Awesomplete.$('#input').addEventListener('click', function() {
+			if (dropdown.ul.childNodes.length === 0) {
+				dropdown.minChars = 0;
+				dropdown.evaluate();
+			}
+			else if (dropdown.ul.hasAttribute('hidden')) {
+				dropdown.open();
+			}
+			else {
+				dropdown.close();
+			}
+            $('#awesomplete_list_1 li').addClass('toOption');
+		});
+
+        /*
+            ================================================= =================================================
+                                                    Opcion Preseleccionada       
+            ================================================= =================================================
+        */
+        var lista2 = ['ABSTRACTO', 'ANIMALES', 'ASESINATO', 'MISTERIO', 'AVENTURA', 'AVIACIÓN', 'VUELO', 'CARRERAS', 'CIENCIA FICCIÓN', 'CIVILIZACIÓN', 'COMBATE', 'CONSTRUCCIÓN DE CIUDADES', 'CONSTRUCCIÓN DE TERRITORIO', 'DEDUCCIÓN', 'DEPORTES', 'ECONOMÍA', 'EDUCATIVO', 'ESPIAS', 'AGENTES', 'SECRETOS', 'EXPLORACIÓN', 'FANTASÍA', 'ROL', 'NAVES', 'FAROLEO', 'FIESTA', 'GUERRA', 'HUMOR', 'INDUSTRIA', 'PRODUCCIÓN', 'LABERINTO', 'MEDIEVAL','MITOLOGÍA', 'NAÚTICO', 'NEGOCIACIÓN', 'OESTE', 'AMERICANO', 'POLÍTICA', 'RENACIMIENTO','ROMPECABEZAS', 'STEAMPUNK', 'TERROR', 'TRANSPORTE', 'TRIVIA', 'VIAJES'] ;
+        var dropdown2 = new Awesomplete('#input2', {
+			minChars: 0,
+			list: lista2,
+            maxItems: lista2.length
+		});
+        $('#input2').val(lista2[0]);
+        $('#awesomplete_list_2').addClass('toSelect');
+        Awesomplete.$('#input2').addEventListener('click', function() {
+            document.getElementById('input2').value = '';
+			if (dropdown2.ul.childNodes.length === 0) {
+				dropdown2.minChars = 0;
+				dropdown2.evaluate();
+			}
+			else if (dropdown2.ul.hasAttribute('hidden')) {
+				dropdown2.open();
+			}
+			else {
+				dropdown2.close();
+			}
+            $('#awesomplete_list_2 li').addClass('toOption');
+		});
+
+
+         /*
+            ================================================= =================================================
+                                                    Array de objetos       
+            ================================================= =================================================
+        */
+        var lista3 = [
+         { nombre: 'ABSTRACTO' , propiedades: 'true'},
+         { nombre: 'ANIMALES' , propiedades: 'true'},
+         { nombre: 'ASESINATO' , propiedades: 'true'},
+         { nombre: 'MISTERIO' , propiedades: 'true'},
+         { nombre: 'AVENTURA' , propiedades: 'true'},
+         { nombre: 'AVIACIÓN' , propiedades: 'true'},
+         { nombre: 'VUELO' , propiedades: 'true'},
+         { nombre: 'CARRERAS' , propiedades: 'true'},
+         { nombre: 'CIENCIA FICCIÓN' , propiedades: 'true'},
+         { nombre: 'CIVILIZACIÓN' , propiedades: 'true'},
+         { nombre: 'COMBATE' , propiedades: 'true'},
+         { nombre: 'CONSTRUCCIÓN DE CIUDADES' , propiedades: 'true'},
+         { nombre: 'CONSTRUCCIÓN DE TERRITORIO' , propiedades: 'true'},
+         { nombre: 'DEDUCCIÓN' , propiedades: 'true'},
+         { nombre: 'DEPORTES' , propiedades: 'true'},
+         { nombre: 'ECONOMÍA' , propiedades: 'true'},
+         { nombre: 'EDUCATIVO' , propiedades: 'true'},
+         { nombre: 'ESPIAS' , propiedades: 'true'},
+         { nombre: 'AGENTES' , propiedades: 'true'},
+         { nombre: 'SECRETOS' , propiedades: 'true'},
+         { nombre: 'EXPLORACIÓN' , propiedades: 'true'},
+         { nombre: 'FANTASÍA' , propiedades: 'true'},
+         { nombre: 'ROL' , propiedades: 'true'},
+         { nombre: 'NAVES' , propiedades: 'true'},
+         { nombre: 'FAROLEO' , propiedades: 'true'},
+         { nombre: 'FIESTA' , propiedades: 'true'},
+         { nombre: 'GUERRA' , propiedades: 'true'},
+         { nombre: 'HUMOR' , propiedades: 'true'},
+         { nombre: 'INDUSTRIA' , propiedades: 'true'},
+         { nombre: 'PRODUCCIÓN' , propiedades: 'true'},
+         { nombre: 'LABERINTO' , propiedades: 'true'},
+         { nombre: 'MEDIEVAL' , propiedades: 'true'},
+         { nombre: 'MITOLOGÍA' , propiedades: 'true'},
+         { nombre: 'NAÚTICO' , propiedades: 'true'},
+         { nombre: 'NEGOCIACIÓN' , propiedades: 'true'},
+         { nombre: 'OESTE' , propiedades: 'true'},
+         { nombre: 'AMERICANO' , propiedades: 'true'},
+         { nombre: 'POLÍTICA' , propiedades: 'true'},
+         { nombre: 'RENACIMIENTO' , propiedades: 'true'},
+         { nombre: 'ROMPECABEZAS' , propiedades: 'true'},
+         { nombre: 'STEAMPUNK' , propiedades: 'true'},
+         { nombre: 'TERROR' , propiedades: 'true'},
+         { nombre: 'TRANSPORTE' , propiedades: 'true'},
+         { nombre: 'TRIVIA' , propiedades: 'true'},
+         { nombre: 'VIAJES' , propiedades: 'true'}
+         ] ;
+
+        var lista3Nombres = lista3.map(function(obj){
+            return obj.nombre ;
+         });
+
+        var dropdown3 = new Awesomplete('#input3', {
+			minChars: 0,
+			list: lista3Nombres,
+            maxItems: lista3.length
+		});
+        $('#awesomplete_list_3').addClass('toSelect');
+        Awesomplete.$('#input3').addEventListener('click', function() {
+			if (dropdown3.ul.childNodes.length === 0) {
+				dropdown3.minChars = 0;
+				dropdown3.evaluate();
+			}
+			else if (dropdown3.ul.hasAttribute('hidden')) {
+				dropdown3.open();
+			}
+			else {
+				dropdown3.close();
+			}
+            $('#awesomplete_list_3 li').addClass('toOption');
+		});
+
+    </script>
+  </body>
+</html>
